@@ -1,3 +1,4 @@
+//json data 
 function getJson(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("get", url);
@@ -17,6 +18,7 @@ getJson(
     }
 );
 
+//táblázat kitöltés
 function fillTable(rows) {
     var table = document.querySelector("table");
     var content = "";
@@ -33,3 +35,28 @@ function fillTable(rows) {
 
     table.querySelector("tbody").innerHTML = content;
 }
+
+var tableData = [];
+/*
+function nameKeySort() {
+    tableData.sort();
+    fillTable(tableData);
+};
+*/
+//a code speciális eset, mert van null értékű (megcseréltem, a null a végére kerül)
+
+function codeSort() {
+    tableData.sort(function (a, b) {
+        if (!a.code) {
+            return 1;
+        } else if (!b.code) {
+            return -1;
+        }
+        return a.code.localeCompare(b.code);
+    });
+    fillTable(tableData);
+};
+
+//document.querySelector("#sort-key").addEventListener("click", nameKeySort);
+//document.querySelector("#sort-name").addEventListener("click", nameKeySort);
+document.querySelector("#sort-code").addEventListener("click", codeSort);
