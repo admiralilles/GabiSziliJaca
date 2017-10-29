@@ -1,4 +1,5 @@
 //json data 
+
 function getJson(url, callback) {
     var xhr = new XMLHttpRequest();
     xhr.open("get", url);
@@ -37,15 +38,32 @@ function fillTable(rows) {
 }
 
 var tableData = [];
-/*
-function nameKeySort() {
-    tableData.sort();
-    fillTable(tableData);
-};
-*/
-//a code speciális eset, mert van null értékű (megcseréltem, a null a végére kerül)
 
-function codeSort() {
+document.querySelector("#sort-key").addEventListener("click", function () {
+    tableData.sort(function (a, b) {
+        if (!a.key) {
+            return 1;
+        } else if (!b.key) {
+            return -1;
+        }
+        return a.key.localeCompare(b.key);
+    });
+    fillTable(tableData);
+});
+
+document.querySelector("#sort-name").addEventListener("click", function () {
+    tableData.sort(function (a, b) {
+        if (!a.name) {
+            return 1;
+        } else if (!b.name) {
+            return -1;
+        }
+        return a.name.localeCompare(b.name);
+    });
+    fillTable(tableData);
+});
+
+document.querySelector("#sort-code").addEventListener("click", function () {
     tableData.sort(function (a, b) {
         if (!a.code) {
             return 1;
@@ -55,8 +73,4 @@ function codeSort() {
         return a.code.localeCompare(b.code);
     });
     fillTable(tableData);
-};
-
-//document.querySelector("#sort-key").addEventListener("click", nameKeySort);
-//document.querySelector("#sort-name").addEventListener("click", nameKeySort);
-document.querySelector("#sort-code").addEventListener("click", codeSort);
+});
