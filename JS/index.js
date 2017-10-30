@@ -29,7 +29,7 @@ function fillTable(rows) {
         tr += "<td>" + rows[i].key + "</td>";
         tr += "<td>" + rows[i].name + "</td>";
         tr += "<td>" + rows[i].code + "</td>";
-        tr += '<td><a class="btn btn-primary" href="match.html?code=' + rows[i].code + '">match</a></td>';
+        tr += '<td><a class="btn btn-primary" href="match.html?code=' + rows[i].key + '">match</a></td>';
         tr += "</tr>";
         content += tr;
     }

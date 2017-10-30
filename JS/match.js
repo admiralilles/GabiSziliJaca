@@ -28,7 +28,7 @@ function fillTable2(rows) {
         if (rows[k]["matches"]) {
             for (var i = 0; i < rows[k].matches.length; i++) {
                 tr = "";
-                if (code == rows[k].matches[i].team1.code || code == rows[k].matches[i].team2.code) {
+                if (code == rows[k].matches[i].team1.key || code == rows[k].matches[i].team2.key) {
                     tr += "<tr>";
                     tr += "<td>" + (parseInt(k) + 1) + "</td>";
                     tr += "<td>" + rows[k].matches[i].date + "</td>";
