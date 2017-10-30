@@ -14,11 +14,11 @@ function getJson(url, callback) {
 getJson(
     "https://raw.githubusercontent.com/opendatajson/football.json/master/2017-18/it.1.json",
     function (tableData) {
-        fillTable(tableData.rounds);
+        fillTable2(tableData.rounds);
     }
 );
 
-function fillTable(rows) {
+function fillTable2(rows) {
     var table = document.querySelector("table");
     var content = "";
     var params = (new URL(document.location)).searchParams;
@@ -28,9 +28,9 @@ function fillTable(rows) {
         if (rows[k]["matches"]) {
             for (var i = 0; i < rows[k].matches.length; i++) {
                 tr = "";
-                if (codename == rows[k].matches[i].team1.name || codename == rows[k].matches[i].team2.name) {
+                if (code == rows[k].matches[i].team1.code || code == rows[k].matches[i].team2.code) {
                     tr += "<tr>";
-                    tr += "<td>" + (i + 1) + "</td>";
+                    tr += "<td>" + (parseInt(k) + 1) + "</td>";
                     tr += "<td>" + rows[k].matches[i].date + "</td>";
                     tr += "<td>" + rows[k].matches[i].team1.name + "</td>";
                     tr += "<td>" + rows[k].matches[i].team2.name + "</td>";
